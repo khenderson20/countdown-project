@@ -1,7 +1,7 @@
 <template>
+  <h3>This is a heading 3</h3>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Welcome to Your Vue.js App" />
-  <h3>This is a heading 3</h3>
 </template>
 
 <script>

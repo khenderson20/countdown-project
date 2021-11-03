@@ -1,16 +1,15 @@
 <template>
-  <h3>This is a heading 3</h3>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <Event></Event>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Event from "./components/Event.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Event,
   },
 };
 </script>

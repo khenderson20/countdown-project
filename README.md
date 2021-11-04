@@ -1,6 +1,6 @@
 # Countdown Vue.js Project
 
-![cats fighting](https://media.giphy.com/media/FuSJ5C7SSHlZCxjC6q/giphy-downsized-large.gif)
+![numbers](https://media.giphy.com/media/l378khQxt68syiWJy/giphy-downsized.gif)
 
 # :space_invader:
 

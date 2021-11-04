@@ -1,6 +1,6 @@
 # Countdown Vue.js Project
 
-<img src="./images/countdown-project.png" width="400">
+![image of project](./images/countdown-project.PNG)
 
 ![numbers](https://media.giphy.com/media/l378khQxt68syiWJy/giphy-downsized.gif)
 

@@ -2,9 +2,16 @@
   <div id="logo">
     <img alt="Vue logo" src="./assets/logo.png" />
   </div>
+  <div class="options">
+    <button @click="showPastEvents = !showPastEvents">Show Past Events</button>
+  </div>
   <ul>
     <li v-for="el in events" :key="el.id">
-      <Event :event="el" :daysLeft="daysLeft(el)"></Event>
+      <Event
+        :event="el"
+        :daysLeft="daysLeft(el)"
+        :showPastEvents="showPastEvents"
+      ></Event>
     </li>
   </ul>
 </template>
@@ -65,6 +72,7 @@ export default {
   data() {
     return {
       events: eventData,
+      showPastEvents: true,
     };
   },
   methods: {

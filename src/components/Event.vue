@@ -1,6 +1,6 @@
 <template>
   <article
-    v-show="Math.sign(daysLeft) !== 1"
+    v-show="Math.sign(daysLeft) !== -1 || showPastEvents"
     :style="{
       background: event.background,
       color: changeContrast ? '#454444' : 'whitesmoke',
@@ -28,7 +28,7 @@
 <script>
 export default {
   name: "Event",
-  props: ["event", "daysLeft"],
+  props: ["event", "daysLeft", "showPastEvents"],
   computed: {
     daysLeftString() {
       const dayOrDays = this.daysLeft === 1 ? "day " : "days ";

@@ -1,8 +1,8 @@
 <template>
-  <article>
+  <article :style="{ background: event.background }">
     <div class="data">
-      <h3 class="name">Title</h3>
-      <p class="details">some text</p>
+      <h3 class="name">{{ event.name }}</h3>
+      <p class="details">{{ event.details }}</p>
     </div>
     <div class="countdown">
       <div class="remove_btn_wrapper">
@@ -20,6 +20,7 @@
 <script>
 export default {
   name: "Event",
+  props: ["event"],
 };
 </script>
 

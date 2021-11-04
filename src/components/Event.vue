@@ -45,4 +45,22 @@ article {
   font-size: 1.6rem;
   border-left: 1px solid;
 }
+
+.name {
+  font-size: 1.8rem;
+}
+
+.details {
+  font-size: 1.6rem;
+}
+
+.remove_btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.remove_btn_wrapper {
+  text-align: right;
+}
 </style>

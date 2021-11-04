@@ -51,7 +51,7 @@ const eventData = [
     name: "Conference Talk",
     details: "dont flop",
     date: "2021-02-28",
-    background: "#68EE94",
+    background: "#68ee94",
   },
 ];
 import Event from "./components/Event.vue";

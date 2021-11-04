@@ -1,7 +1,10 @@
 <template>
   <article
     v-show="Math.sign(daysLeft) !== 1"
-    :style="{ background: event.background }"
+    :style="{
+      background: event.background,
+      color: changeContrast ? '#454444' : 'whitesmoke',
+    }"
   >
     <div class="data">
       <h3 class="name">{{ event.name }}</h3>
@@ -20,6 +23,7 @@
       </p>
     </div>
   </article>
+  {{ changeContrast }}
 </template>
 
 <script>
@@ -31,6 +35,11 @@ export default {
       const dayOrDays = this.daysLeft === 1 ? "day " : "days ";
       const leftOrAgo = Math.sign(this.daysLeft) !== -1 ? "left" : "ago";
       return dayOrDays + leftOrAgo;
+    },
+
+    changeContrast() {
+      const lowContrastBackgrounds = ["#f9f970", "#68ee94"];
+      return lowContrastBackgrounds.includes(this.event.background);
     },
   },
 };

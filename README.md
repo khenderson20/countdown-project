@@ -1,4 +1,6 @@
-![cats fighting](https://media.giphy.com/media/Ov5NiLVXT8JEc/giphy.gif)
+# Countdown Vue.js Project
+
+![cats fighting](https://media.giphy.com/media/FuSJ5C7SSHlZCxjC6q/giphy-downsized-large.gif)
 
 # :space_invader:
 

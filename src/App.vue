@@ -15,28 +15,28 @@ const eventData = [
     id: 1,
     name: "Graduation",
     details: "wooohoo!!!",
-    date: "2020-09-25",
+    date: "2017-09-25", // past date
     background: "#F34949",
   },
   {
     id: 2,
     name: "Holidays",
     details: "wooohoo!!!",
-    date: "2021-12-30",
+    date: "2021-11-04", // today's date
     background: "#f9f970",
   },
   {
     id: 3,
     name: "HolidayYYYY",
     details: "Get me outta here!",
-    date: "2020-09-12",
+    date: "2021-11-05", // tomorrows date
     background: "#7AD3F0",
   },
   {
     id: 4,
     name: "Birthday",
     details: "My birthday party",
-    date: "2020-10-02",
+    date: "2024-01-22", // future date
     background: "#F07AEC",
   },
   {

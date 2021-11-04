@@ -23,7 +23,6 @@
       </p>
     </div>
   </article>
-  {{ changeContrast }}
 </template>
 
 <script>

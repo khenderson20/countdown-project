@@ -1,3 +1,5 @@
+![cats fighting](https://media.giphy.com/media/Ov5NiLVXT8JEc/giphy.gif)
+
 # :space_invader:
 
 ## Table of contents

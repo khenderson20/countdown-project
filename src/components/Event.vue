@@ -9,7 +9,7 @@
         <button class="remove_btn">&#10060;</button>
       </div>
       <p>
-        32
+        {{ daysLeft }}
         <br />
         <small>days left</small>
       </p>
@@ -20,7 +20,7 @@
 <script>
 export default {
   name: "Event",
-  props: ["event"],
+  props: ["event", "daysLeft"],
 };
 </script>
 

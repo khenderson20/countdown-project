@@ -4,7 +4,7 @@
   </div>
   <ul>
     <li v-for="el in events" :key="el.id">
-      <Event :event="el"></Event>
+      <Event :event="el" :daysLeft="daysLeft(el)"></Event>
     </li>
   </ul>
 </template>
@@ -66,6 +66,16 @@ export default {
     return {
       events: eventData,
     };
+  },
+  methods: {
+    daysLeft(e) {
+      const Time = Date.parse(e.date) - Date.now();
+      // converting the milliseconds to proper Days using the miliseconds / (miliseconds * seconds * minutes * hours) <-- in 1 day
+      const Days = Math.ceil(Time / (1000 * 60 * 60 * 24));
+      console.log(Days);
+
+      return Days;
+    },
   },
 };
 </script>

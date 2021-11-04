@@ -1,24 +1,19 @@
-# countdown-project
+# :space_invader:
 
-## Project setup
-```
-npm install
-```
+## Table of contents
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- [General info](#general-info)
+- [Technologies](#technologies)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## General info
 
-### Lints and fixes files
-```
-npm run lint
-```
+This project is my one of my many experiments learning with [Vue.js](https://v3.vuejs.org/ "Vue 3")
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Technologies
+
+Project was created with:
+
+- Vue.js - version: `3.0`
+- npm - version: `8.1.0`
+- node.js - version: `16.13.0`
+- Vue CLI - version: `@vue/cli 4.5.15`

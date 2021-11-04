@@ -1,6 +1,6 @@
 <template>
   <article
-    v-show="Math.sign(daysLeft) !== -1"
+    v-show="Math.sign(daysLeft) !== 1"
     :style="{ background: event.background }"
   >
     <div class="data">
@@ -15,10 +15,8 @@
       <p v-else>
         {{ Math.abs(daysLeft) }}
         <br />
-        <small
-          >{{ daysLeft === 1 ? "day" : "days" }}
-          {{ Math.sign(daysLeft) !== -1 ? "left" : "ago" }}
-        </small>
+        <!-- computed property "daysLeftString" -->
+        <small>{{ daysLeftString }}</small>
       </p>
     </div>
   </article>
@@ -28,6 +26,13 @@
 export default {
   name: "Event",
   props: ["event", "daysLeft"],
+  computed: {
+    daysLeftString() {
+      const dayOrDays = this.daysLeft === 1 ? "day " : "days ";
+      const leftOrAgo = Math.sign(this.daysLeft) !== -1 ? "left" : "ago";
+      return dayOrDays + leftOrAgo;
+    },
+  },
 };
 </script>
 

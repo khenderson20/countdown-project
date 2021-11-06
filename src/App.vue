@@ -6,7 +6,7 @@
     <button @click="showPastEvents = !showPastEvents">Show Past Events</button>
   </div>
   <ul>
-    <li v-for="el in events" :key="el.id">
+    <li v-for="el in orderEvents" :key="el.id">
       <Event
         :event="el"
         :daysLeft="daysLeft(el)"
@@ -83,6 +83,12 @@ export default {
       console.log(Days);
 
       return Days;
+    },
+  },
+  computed: {
+    orderEvents() {
+      const eventsToOrder = this.events;
+      return eventsToOrder.sort((a, b) => (a.date > b.date ? 1 : -1));
     },
   },
 };

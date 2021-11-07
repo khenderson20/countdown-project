@@ -1,9 +1,15 @@
 <template>
+  <teleport to="#modal">
+    <form v-if="showForm">
+      <p>add new event</p>
+    </form>
+  </teleport>
   <div id="logo">
     <img alt="Vue logo" src="./assets/logo.png" />
   </div>
   <div class="options">
     <button @click="showPastEvents = !showPastEvents">Show Past Events</button>
+    <button class="addNew" @click="showForm = !showForm">&#43;</button>
   </div>
   <ul>
     <li v-for="el in orderEvents" :key="el.id">
@@ -73,6 +79,7 @@ export default {
     return {
       events: eventData,
       showPastEvents: true,
+      showForm: false,
     };
   },
   methods: {

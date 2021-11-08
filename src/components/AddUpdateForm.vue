@@ -34,5 +34,52 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+.form_wrapper {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background: darkgrey;
+  min-width: 60vh;
+  min-height: 40vh;
+  padding: 2rem;
+  border-radius: 0.3rem;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  font-size: 1.6rem;
+}
+
+form input,
+select {
+  margin: 0.6rem 0;
+  padding: 0.6rem 1rem;
+  border: 1px solid lightgrey;
+  border-radius: 0.3rem;
+}
+
+form button {
+  background-color: rgb(123, 194, 123);
+  width: 100px;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+
+label {
+  color: rgb(49, 49, 49);
+}
 </style>

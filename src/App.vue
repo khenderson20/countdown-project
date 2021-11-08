@@ -1,6 +1,6 @@
 <template>
   <teleport to="#modal">
-    <AddUpdateForm v-if="showForm" />
+    <AddUpdateForm @close-form="showForm = false" v-if="showForm" />
   </teleport>
   <div id="logo">
     <img alt="Vue logo" src="./assets/logo.png" />

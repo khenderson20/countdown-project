@@ -1,6 +1,7 @@
 <template>
   <div class="form_wrapper">
     <form>
+      <span class="close" @click="$emit('close-form')"> &#10060; </span>
       <div>
         <label for="name">Name:</label>
         <input type="text" id="name" />
@@ -31,10 +32,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: [],
+  emits: ["close-form"],
+};
 </script>
 
 <style scoped>
+.close {
+  align-self: flex-end;
+  cursor: pointer;
+}
+
 .form_wrapper {
   background: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -48,6 +57,8 @@ export default {};
 }
 
 form {
+  display: flex;
+  flex-direction: column;
   background: darkgrey;
   min-width: 60vh;
   min-height: 40vh;

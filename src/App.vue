@@ -1,8 +1,6 @@
 <template>
   <teleport to="#modal">
-    <form v-if="showForm">
-      <p>add new event</p>
-    </form>
+    <AddUpdateForm v-if="showForm" />
   </teleport>
   <div id="logo">
     <img alt="Vue logo" src="./assets/logo.png" />
@@ -68,11 +66,12 @@ const eventData = [
   },
 ];
 import Event from "./components/Event.vue";
-
+import AddUpdateForm from "./components/AddUpdateForm.vue";
 export default {
   name: "App",
   components: {
     Event,
+    AddUpdateForm,
   },
 
   data() {

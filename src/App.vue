@@ -1,6 +1,10 @@
 <template>
   <teleport to="#modal">
-    <AddUpdateForm @close-form="showForm = false" v-if="showForm" />
+    <AddUpdateForm
+      @push-event="add($event)"
+      @close-form="showForm = false"
+      v-if="showForm"
+    />
   </teleport>
   <div id="logo">
     <img alt="Vue logo" src="./assets/logo.png" />
@@ -82,6 +86,14 @@ export default {
     };
   },
   methods: {
+    add(e) {
+      // add an id based on the array length
+      e.id = this.events.length + 1;
+      // push the new event onto array of events
+      this.events.push(e);
+      // close the form
+      this.showForm = false;
+    },
     daysLeft(e) {
       const Time = Date.parse(e.date) - Date.now();
       // converting the milliseconds to proper Days using the miliseconds / (miliseconds * seconds * minutes * hours) <-- in 1 day

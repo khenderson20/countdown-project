@@ -1,22 +1,23 @@
 <template>
   <div class="form_wrapper">
     <form>
+      {{ eventObj }}
       <span class="close" @click="$emit('close-form')"> &#10060; </span>
       <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" />
+        <input type="text" id="name" v-model="eventObj.name" />
       </div>
       <div>
         <label for="details">Details:</label>
-        <input type="text" id="details" />
+        <input type="text" id="details" v-model="eventObj.details" />
       </div>
       <div>
         <label for="date">Date:</label>
-        <input type="date" id="date" />
+        <input type="date" id="date" v-model="eventObj.date" />
       </div>
       <div>
         <label for="background">background:</label>
-        <select name="" id="background">
+        <select name="" id="background" v-model="eventObj.background">
           <option value="#F34949">Red</option>
           <option value="#F07AEC">Pink</option>
           <option value="#997AF0">Purple</option>
@@ -26,7 +27,7 @@
           <option value="#EB9A0F">Orange</option>
         </select>
       </div>
-      <button>add</button>
+      <button @click.prevent="$emit('push-event', eventObj)">add</button>
     </form>
   </div>
 </template>
@@ -34,7 +35,12 @@
 <script>
 export default {
   props: [],
-  emits: ["close-form"],
+  emits: ["close-form", "push-event"],
+  data() {
+    return {
+      eventObj: {},
+    };
+  },
 };
 </script>
 

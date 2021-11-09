@@ -91,8 +91,8 @@ export default {
       e.id = this.events.length + 1;
       // push the new event onto array of events
       this.events.push(e);
-      // close the form
-      this.showForm = false;
+      // close the form using custom event 'close-form' instead of using boolean
+      // this.showForm = false;
     },
     daysLeft(e) {
       const Time = Date.parse(e.date) - Date.now();

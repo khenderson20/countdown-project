@@ -1,6 +1,8 @@
 <template>
   <div class="form_wrapper">
-    <form>
+    <form
+      @keyup.enter.prevent="$emit('push-event', eventObj), $emit('close-form')"
+    >
       {{ eventObj }}
       <span class="close" @click="$emit('close-form')"> &#10060; </span>
       <div>
@@ -27,7 +29,11 @@
           <option value="#EB9A0F">Orange</option>
         </select>
       </div>
-      <button @click.prevent="$emit('push-event', eventObj)">add</button>
+      <button
+        @click.prevent="$emit('push-event', eventObj), $emit('close-form')"
+      >
+        add
+      </button>
     </form>
   </div>
 </template>

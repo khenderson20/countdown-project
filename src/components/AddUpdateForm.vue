@@ -1,9 +1,11 @@
 <template>
   <div class="form_wrapper">
-    <form
-      @keyup.enter.prevent="$emit('push-event', eventObj), $emit('close-form')"
-    >
-      {{ eventObj }}
+    <form @keyup.enter.prevent="validate()">
+      <div v-if="errors.length > 0">
+        <ul>
+          <li v-for="error in errors" :key="error">{{ error }}</li>
+        </ul>
+      </div>
       <span class="close" @click="$emit('close-form')"> &#10060; </span>
       <div>
         <label for="name">Name:</label>
@@ -29,11 +31,7 @@
           <option value="#EB9A0F">Orange</option>
         </select>
       </div>
-      <button
-        @click.prevent="$emit('push-event', eventObj), $emit('close-form')"
-      >
-        add
-      </button>
+      <button @click.prevent="validate()">add</button>
     </form>
   </div>
 </template>
@@ -45,7 +43,35 @@ export default {
   data() {
     return {
       eventObj: {},
+      errors: [],
     };
+  },
+  methods: {
+    addEvent() {
+      this.$emit("push-event", this.eventObj);
+      this.$emit("close-form");
+    },
+    validate() {
+      this.errors = [];
+      if (!this.eventObj.name) {
+        this.errors.push("Name is required");
+      }
+      if (!this.eventObj.details) {
+        this.errors.push("Event details are required");
+      }
+      if (!this.eventObj.date) {
+        this.errors.push("Event date is required");
+      }
+      if (!this.eventObj.background) {
+        this.errors.push("Event background is required");
+      }
+      // form has errors, don't add event
+      if (this.errors.length > 0) {
+        return;
+      }
+      // no errors, add event to array
+      this.addEvent();
+    },
   },
 };
 </script>

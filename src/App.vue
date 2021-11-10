@@ -2,6 +2,7 @@
   <teleport to="#modal">
     <AddUpdateForm
       @push-event="add($event)"
+      @update-event="update($event)"
       @close-form="showForm = false"
       v-if="showForm"
       :currentEvent="currentEvent"
@@ -88,6 +89,12 @@ export default {
     };
   },
   methods: {
+    update(e) {
+      // loop through and find the index in 'eventData' that matches the event id
+      const index = this.events.findIndex((element) => element.id === e.id);
+      // set that found element with the NEW event data.
+      this.events[index] = e;
+    },
     setForm(e) {
       this.currentEvent = e || {};
       this.showForm = true;

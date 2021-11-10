@@ -1,13 +1,16 @@
 <template>
   <teleport to="#modal">
-    <AddUpdateForm
-      @push-event="add($event)"
-      @update-event="update($event)"
-      @close-form="closeForm()"
-      v-if="showForm"
-      :currentEvent="currentEvent"
-    />
+    <transition name="bounce">
+      <AddUpdateForm
+        @push-event="add($event)"
+        @update-event="update($event)"
+        @close-form="closeForm()"
+        v-if="showForm"
+        :currentEvent="currentEvent"
+      />
+    </transition>
   </teleport>
+
   <div id="logo">
     <img alt="Vue logo" src="./assets/logo.png" />
   </div>
@@ -16,14 +19,21 @@
     <button class="addNew" @click="showForm = !showForm">&#43;</button>
   </div>
   <ul>
-    <li v-for="el in orderEvents" :key="el.id" @click="setForm(el)">
-      <Event
-        :event="el"
-        :daysLeft="daysLeft(el)"
-        :showPastEvents="showPastEvents"
-        @remove-event="remove($event)"
-      ></Event>
-    </li>
+    <transition-group name="fade" appear="true">
+      <li
+        v-for="el in orderEvents"
+        :key="el.id"
+        @click="setForm(el)"
+        class="fade-item"
+      >
+        <Event
+          :event="el"
+          :daysLeft="daysLeft(el)"
+          :showPastEvents="showPastEvents"
+          @remove-event="remove($event)"
+        ></Event>
+      </li>
+    </transition-group>
   </ul>
 </template>
 
@@ -155,5 +165,49 @@ ul {
 li {
   list-style: none;
   cursor: pointer;
+}
+
+/* CSS Transitions for modal component render. */
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    opacity: 0.3;
+    z-index: 3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* CSS Transition for event array component renders. */
+.fade-item {
+  transition: all 0.8s ease;
+}
+.fade-leave-active {
+  position: absolute;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  animation-delay: 0.4s;
+  transform: translateX(-600px);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(600px);
+}
+
+.fade-move {
+  transition: transform 0.8s ease;
 }
 </style>

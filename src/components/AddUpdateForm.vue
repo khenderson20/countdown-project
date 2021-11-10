@@ -31,7 +31,10 @@
           <option value="#EB9A0F">Orange</option>
         </select>
       </div>
-      <button @click.prevent="validate()">add</button>
+      <button v-if="currentEvent.id" @click.prevent="validate('update')">
+        Update
+      </button>
+      <button v-else @click.prevent="validate('add')">Add</button>
     </form>
   </div>
 </template>
@@ -39,7 +42,7 @@
 <script>
 export default {
   props: ["currentEvent"],
-  emits: ["close-form", "push-event"],
+  emits: ["close-form", "push-event", "update-event"],
   data() {
     return {
       eventObj: {},
@@ -54,7 +57,11 @@ export default {
       this.$emit("push-event", this.eventObj);
       this.$emit("close-form");
     },
-    validate() {
+    updateEvent() {
+      this.$emit("update-event", this.eventObj);
+      this.$emit("close-form");
+    },
+    validate(type) {
       this.errors = [];
       if (!this.eventObj.name) {
         this.errors.push("Name is required");
@@ -73,7 +80,12 @@ export default {
         return;
       }
       // no errors, add event to array
-      this.addEvent();
+      if (type === "add") {
+        this.addEvent();
+      } else {
+        // update the event array.
+        this.updateEvent();
+      }
     },
   },
 };

@@ -12,7 +12,7 @@
     </div>
     <div class="countdown">
       <div class="remove_btn_wrapper">
-        <button class="remove_btn">&#10060;</button>
+        <button @click.stop="remove()" class="remove_btn">&#10060;</button>
       </div>
       <p v-if="daysLeft === 0">Today!</p>
       <p v-else>
@@ -28,7 +28,13 @@
 <script>
 export default {
   name: "Event",
+  emits: ["remove-event"],
   props: ["event", "daysLeft", "showPastEvents"],
+  methods: {
+    remove() {
+      this.$emit("remove-event", this.event);
+    },
+  },
   computed: {
     daysLeftString() {
       const dayOrDays = this.daysLeft === 1 ? "day " : "days ";

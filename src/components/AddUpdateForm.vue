@@ -38,13 +38,16 @@
 
 <script>
 export default {
-  props: [],
+  props: ["currentEvent"],
   emits: ["close-form", "push-event"],
   data() {
     return {
       eventObj: {},
       errors: [],
     };
+  },
+  mounted() {
+    this.eventObj = this.currentEvent;
   },
   methods: {
     addEvent() {

@@ -19,10 +19,18 @@
     <button class="addNew" @click="showForm = !showForm">&#43;</button>
   </div>
   <ul>
-    <transition-group name="fade" appear="true">
+    <transition-group
+      name="fade"
+      appear="true"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @leave="leave"
+      move-class="fade-move"
+    >
       <li
-        v-for="el in orderEvents"
+        v-for="(el, index) in orderEvents"
         :key="el.id"
+        :data-index="index"
         @click="setForm(el)"
         class="fade-item"
       >
@@ -84,6 +92,7 @@ const eventData = [
 ];
 import Event from "./components/Event.vue";
 import AddUpdateForm from "./components/AddUpdateForm.vue";
+import gsap from "gsap";
 export default {
   name: "App",
   components: {
@@ -136,6 +145,35 @@ export default {
       console.log(Days);
 
       return Days;
+    },
+    beforeEnter(el) {
+      let tl = gsap.timeline(); // create timeline
+      tl.fromTo(el, { opacity: 0 }, { opacity: 1 });
+    },
+    enter(el, done) {
+      let tl = gsap.timeline(); // create timeline
+      tl.from(el, {
+        opacity: 1,
+        ease: "power3",
+        x: -1000,
+        delay: el.dataset.index * 0.15,
+      }) // start the sequence
+        .set(el, {
+          opacity: 1,
+          ease: "power3",
+          onComplete: done,
+        });
+    },
+    leave(el, done) {
+      let tl = gsap.timeline(); // create a timeline
+      tl.set(el, { opacity: 1 }) // start the sequence
+        .to(el, {
+          opacity: 0,
+          x: 3000,
+          ease: "power3",
+          duration: 0.8,
+          onComplete: done,
+        });
     },
   },
   computed: {
@@ -194,9 +232,10 @@ li {
 }
 .fade-leave-active {
   position: absolute;
+  width: 50%;
 }
 
-.fade-enter-from {
+/* .fade-enter-from {
   opacity: 0;
   animation-delay: 0.4s;
   transform: translateX(-600px);
@@ -205,9 +244,9 @@ li {
 .fade-leave-to {
   opacity: 0;
   transform: translateX(600px);
-}
+} */
 
 .fade-move {
-  transition: transform 0.8s ease;
+  transition: all 0.8s ease;
 }
 </style>

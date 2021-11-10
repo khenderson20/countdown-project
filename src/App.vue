@@ -4,6 +4,7 @@
       @push-event="add($event)"
       @close-form="showForm = false"
       v-if="showForm"
+      :currentEvent="currentEvent"
     />
   </teleport>
   <div id="logo">
@@ -14,7 +15,7 @@
     <button class="addNew" @click="showForm = !showForm">&#43;</button>
   </div>
   <ul>
-    <li v-for="el in orderEvents" :key="el.id">
+    <li v-for="el in orderEvents" :key="el.id" @click="setForm(el)">
       <Event
         :event="el"
         :daysLeft="daysLeft(el)"
@@ -83,9 +84,14 @@ export default {
       events: eventData,
       showPastEvents: true,
       showForm: false,
+      currentEvent: {},
     };
   },
   methods: {
+    setForm(e) {
+      this.currentEvent = e || {};
+      this.showForm = true;
+    },
     add(e) {
       // add an id based on the array length
       e.id = this.events.length + 1;

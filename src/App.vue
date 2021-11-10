@@ -3,7 +3,7 @@
     <AddUpdateForm
       @push-event="add($event)"
       @update-event="update($event)"
-      @close-form="showForm = false"
+      @close-form="closeForm()"
       v-if="showForm"
       :currentEvent="currentEvent"
     />
@@ -21,6 +21,7 @@
         :event="el"
         :daysLeft="daysLeft(el)"
         :showPastEvents="showPastEvents"
+        @remove-event="remove($event)"
       ></Event>
     </li>
   </ul>
@@ -89,11 +90,22 @@ export default {
     };
   },
   methods: {
+    findEventIndex(id) {
+      return this.events.findIndex((element) => element.id === id);
+    },
+    remove(e) {
+      // loop through and find the index in 'eventData' that matches the event id
+      // remove the element based on index found
+      this.events.splice(this.findEventIndex(e.id), 1);
+    },
+    closeForm() {
+      this.showForm = false;
+      this.currentEvent = {};
+    },
     update(e) {
       // loop through and find the index in 'eventData' that matches the event id
-      const index = this.events.findIndex((element) => element.id === e.id);
       // set that found element with the NEW event data.
-      this.events[index] = e;
+      this.events[this.findEventIndex(e.id)] = e;
     },
     setForm(e) {
       this.currentEvent = e || {};

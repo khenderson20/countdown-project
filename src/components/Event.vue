@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: "Event",
+  name: "EventComp",
   emits: ["remove-event"],
   // props: ["event", "daysLeft", "showPastEvents"],
   props: {

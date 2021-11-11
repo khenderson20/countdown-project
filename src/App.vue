@@ -232,19 +232,8 @@ li {
 }
 .fade-leave-active {
   position: absolute;
-  width: 50%;
+  width: 40%;
 }
-
-/* .fade-enter-from {
-  opacity: 0;
-  animation-delay: 0.4s;
-  transform: translateX(-600px);
-}
-
-.fade-leave-to {
-  opacity: 0;
-  transform: translateX(600px);
-} */
 
 .fade-move {
   transition: all 0.8s ease;

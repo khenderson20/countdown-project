@@ -15,7 +15,14 @@
     <img alt="Vue logo" src="./assets/logo.png" />
   </div>
   <div class="options">
-    <button @click="showPastEvents = !showPastEvents">Show Past Events</button>
+    <div class="option_buttons">
+      <button @click="showPastEvents = !showPastEvents">
+        Show {{ showPastEvents ? "Past" : "Upcoming" }} Events
+      </button>
+      <button @click="grayModeSet = !grayModeSet">
+        DarkMode {{ grayModeSet ? "ON" : "OFF" }}
+      </button>
+    </div>
     <button class="addNew" @click="showForm = !showForm">&#43;</button>
   </div>
   <ul>
@@ -35,6 +42,7 @@
         class="fade-item"
       >
         <Event
+          :style="grayModeSet ? grayMode : ''"
           :event="el"
           :daysLeft="daysLeft(el)"
           :showPastEvents="showPastEvents"
@@ -106,6 +114,11 @@ export default {
       showPastEvents: true,
       showForm: false,
       currentEvent: {},
+      grayModeSet: false,
+      grayMode: {
+        background: "lightslategrey",
+        color: "#454444",
+      },
     };
   },
   methods: {
@@ -203,6 +216,11 @@ ul {
 li {
   list-style: none;
   cursor: pointer;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* CSS Transitions for modal component render. */

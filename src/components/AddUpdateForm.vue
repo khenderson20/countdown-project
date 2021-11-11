@@ -41,7 +41,12 @@
 
 <script>
 export default {
-  props: ["currentEvent"],
+  // props: ["currentEvent"],
+  props: {
+    currentEvent: {
+      type: Object,
+    },
+  },
   emits: ["close-form", "push-event", "update-event"],
   data() {
     return {

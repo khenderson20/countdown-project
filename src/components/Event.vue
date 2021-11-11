@@ -29,7 +29,21 @@
 export default {
   name: "Event",
   emits: ["remove-event"],
-  props: ["event", "daysLeft", "showPastEvents"],
+  // props: ["event", "daysLeft", "showPastEvents"],
+  props: {
+    event: {
+      type: Object,
+      default: function () {
+        return {
+          id: 12,
+          name: "Hello World",
+          details: "some text goes here...",
+        };
+      },
+    },
+    daysLeft: { type: Number, default: 10 },
+    showPastEvents: { type: Boolean }, // defaults to 'false' when no prop is passed
+  },
   methods: {
     remove() {
       this.$emit("remove-event", this.event);

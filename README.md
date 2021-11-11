@@ -1,8 +1,8 @@
 # Countdown Vue.js Project
 
-![image of project](./images/countdown-project.PNG)
+![image of project](./images/vue_app.gif)
 
-![numbers](https://media.giphy.com/media/l378khQxt68syiWJy/giphy-downsized.gif)
+![matrix](https://media.giphy.com/media/sk6yL9EGVeAcE/giphy.gif)
 
 # :space_invader:
 

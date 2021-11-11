@@ -21,7 +21,7 @@
   <ul>
     <transition-group
       name="fade"
-      appear="true"
+      :appear="true"
       @before-enter="beforeEnter"
       @enter="enter"
       @leave="leave"
